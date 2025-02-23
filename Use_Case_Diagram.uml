@@ -1,0 +1,14 @@
+@startuml UseCaseDiagram
+left to right direction
+actor Client
+actor Barber
+
+rectangle Barbershop {
+Client -- (Order service online)
+Client -- (Pay for service)
+Barber -- (View client list)
+Barber -- (Perform service)
+(Order service online) .> (View client list) : includes
+(Perform service) .> (Pay for service) : includes
+}
+@enduml

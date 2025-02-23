@@ -1,0 +1,51 @@
+@startuml Class_Diagram
+class Client {
+-name: String
+-phone: String
++orderService(service: Service, time: String): void
++pay(amount: double): void
+}
+
+class Barber {
+-name: String
+-experience: int
++prepareForWork(): void
++performService(client: Client, service: Service): void
+}
+
+abstract class Service {
+-name: String
+-price: double
+-state: String
++{abstract} execute(): void
++changeState(newState: String): void
+}
+
+class Haircut extends Service {
++execute(): void
+}
+
+class Shaving extends Service {
++execute(): void
+}
+
+interface Payment {
++pay(amount: double): void
+}
+
+class OnlinePayment implements Payment {
++pay(amount: double): void
+}
+
+class CashPayment implements Payment {
++pay(amount: double): void
+}
+
+Client --> Service : orders
+Barber --> Service : performs
+Client --> Payment : pays
+Service <|-- Haircut
+Service <|-- Shaving
+Payment <|.. OnlinePayment
+Payment <|.. CashPayment
+@enduml

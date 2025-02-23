@@ -1,0 +1,12 @@
+@startuml StateDiagram
+[*] --> Ordered: Customer orders a service
+Ordered --> Prepared: Barber is preparing
+Prepared --> In progress: Barber starts performing
+In progress --> Completed: Service is performed
+Completed --> [*]: Service is completed
+
+state Ordered: Customer has selected a service
+state Prepared: Barber is preparing to work
+state In progress: Barber is performing a service
+state Completed: Service is performed, customer pays
+@enduml

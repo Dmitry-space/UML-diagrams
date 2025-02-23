@@ -1,0 +1,19 @@
+@startuml SequenceDiagram
+actor Client
+actor Barber
+
+participant "Online ordering system" as System
+participant "Service" as Service
+participant "Payment" as Payment
+
+Client -> System: Order service online (service name, time)
+System -> Barber: Send client list
+Barber -> Barber: Prepare for work
+Barber -> Client: Confirm appointment
+Client -> Barber: Come to barbershop
+Barber -> Service: Perform service (service name)
+Service -> Barber: Notify completion
+Barber -> Client: Notify readiness
+Client -> Payment: Pay for service (amount)
+Payment -> Client: Confirm payment
+@enduml
